@@ -15,16 +15,16 @@ import java.util.List;
 
 public class SearchRepository {
 
-    public static List<SearchItem> search(String query) {
+    public static List<SearchItem> search(String query, String filter, String sort) {
 
-        String BASE_URL = "https://kinozal.guru/browse.php";
+        String BASE_URL = "https://kinozal.guru";
+        String SEARCH_URL = BASE_URL + "/browse.php";
+
         List<SearchItem> items = new ArrayList<>();
 
         int pages = 0;
 
-
-
-        String url = UriComponentsBuilder.fromUriString(BASE_URL)
+        String url = UriComponentsBuilder.fromUriString(SEARCH_URL)
                 .queryParam("s", query)
                 .build()
                 .toString();
@@ -46,9 +46,10 @@ public class SearchRepository {
             }
 
             for (int i = 0; i < pages; i++) {
-                String pageUrl = UriComponentsBuilder.fromUriString(BASE_URL)
+                String pageUrl = UriComponentsBuilder.fromUriString(SEARCH_URL)
                         .queryParam("s", query)
-                        .build()
+                        .queryParam("t", filter)
+                        .queryParam("f", sort)  .build()
                         .toString();
 
                 Document document = Jsoup.connect(pageUrl)

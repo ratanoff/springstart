@@ -21,7 +21,10 @@ public class FilmController {
     }
 
     @GetMapping("/search")
-    public List<SearchItem> searchFilm(@RequestParam("query") String query) {
-        return SearchRepository.search(query);
+    public List<SearchItem> searchFilm(
+            @RequestParam("query") String query,
+            @RequestParam(value = "t", required = false, defaultValue = "1") String filter,
+            @RequestParam(value = "f", required = false, defaultValue = "0") String sort) {
+        return SearchRepository.search(query, filter, sort);
     }
 }
