@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilmRepository {
+public class TopRepository {
 
     public static List<TopFilm> getTop() {
 

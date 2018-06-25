@@ -2,9 +2,12 @@ package ru.ratanov.springstart.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ru.ratanov.springstart.persistence.model.SearchItem;
 import ru.ratanov.springstart.persistence.model.TopFilm;
-import ru.ratanov.springstart.persistence.repo.FilmRepository;
+import ru.ratanov.springstart.persistence.repo.TopRepository;
+import ru.ratanov.springstart.persistence.repo.SearchRepository;
 
 import java.util.List;
 
@@ -14,6 +17,11 @@ public class FilmController {
 
     @GetMapping("/top")
     public List<TopFilm> getTop() {
-        return FilmRepository.getTop();
+        return TopRepository.getTop();
+    }
+
+    @GetMapping("/search")
+    public List<SearchItem> searchFilm(@RequestParam("query") String query) {
+        return SearchRepository.search(query);
     }
 }
