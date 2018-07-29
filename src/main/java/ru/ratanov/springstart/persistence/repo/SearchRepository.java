@@ -1,6 +1,5 @@
 package ru.ratanov.springstart.persistence.repo;
 
-import org.apache.commons.logging.Log;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -24,7 +23,7 @@ public class SearchRepository {
 
         int pages = 0;
 
-        String url = UriComponentsBuilder.fromUriString(SEARCH_URL)
+            String url = UriComponentsBuilder.fromUriString(SEARCH_URL)
                 .queryParam("s", query)
                 .build()
                 .toString();
