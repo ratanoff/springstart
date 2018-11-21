@@ -4,16 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.ratanov.springstart.persistence.model.Film;
-import ru.ratanov.springstart.persistence.model.SameItem;
-import ru.ratanov.springstart.persistence.model.SearchItem;
-import ru.ratanov.springstart.persistence.model.TopFilm;
-import ru.ratanov.springstart.persistence.repo.FilmRepository;
-import ru.ratanov.springstart.persistence.repo.SameRepository;
-import ru.ratanov.springstart.persistence.repo.TopRepository;
-import ru.ratanov.springstart.persistence.repo.SearchRepository;
+import ru.ratanov.springstart.persistence.model.*;
+import ru.ratanov.springstart.persistence.repo.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -23,6 +18,9 @@ public class FilmController {
     public List<TopFilm> getTop() {
         return TopRepository.getTop();
     }
+
+    @GetMapping("/filters")
+    public Map<String, List<Filter>> getFilters() { return FilterRepository.getFilters(); }
 
     @GetMapping("/search")
     public List<SearchItem> searchFilm(
