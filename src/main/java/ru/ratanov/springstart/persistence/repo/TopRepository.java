@@ -26,6 +26,7 @@ public class TopRepository {
             Elements elements = doc.select("div.bx1").select("a");
             for (Element element : elements) {
                 String link = BASE_URL + element.select("a").attr("href");
+                String title = element.select("a").attr("title").split("/")[0];
                 String tmp = element.select("a").select("img").attr("src");
 
                 String pictureUrl;
@@ -38,6 +39,7 @@ public class TopRepository {
 
                 TopFilm topFilm = new TopFilm();
                 topFilm.setPosterUrl(pictureUrl);
+                topFilm.setTitle(title);
                 topFilm.setLink(link);
 
                 items.add(topFilm);

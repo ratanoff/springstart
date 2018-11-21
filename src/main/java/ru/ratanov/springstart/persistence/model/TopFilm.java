@@ -13,6 +13,9 @@ public class TopFilm {
     private String posterUrl;
 
     @Column
+    private String title;
+
+    @Column
     private String link;
 
     public TopFilm() {
@@ -32,6 +35,14 @@ public class TopFilm {
 
     public void setPosterUrl(String posterUrl) {
         this.posterUrl = posterUrl;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getLink() {
