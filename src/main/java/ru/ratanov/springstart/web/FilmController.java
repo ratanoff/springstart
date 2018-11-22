@@ -20,7 +20,7 @@ public class FilmController {
     }
 
     @GetMapping("/filters")
-    public Map<String, List<Filter>> getFilters() { return FilterRepository.getFilters(); }
+    public List<Filter> getFilters() { return FilterRepository.Companion.getFilters(); }
 
     @GetMapping("/search")
     public List<SearchItem> searchFilm(
