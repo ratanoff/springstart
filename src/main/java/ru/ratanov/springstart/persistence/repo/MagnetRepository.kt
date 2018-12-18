@@ -8,8 +8,11 @@ class MagnetRepository {
     companion object {
         fun getMagnetLink(filmUrl: String): String {
             val doc = Jsoup
-                    .connect(filmUrl.replace("details.php?",
-                            "get_srv_details.php?action=2&"))
+                    .connect(filmUrl.
+                            replace("details.php?",
+                                    "get_srv_details.php?action=2&")
+                            .replace("-tv.appspot.com", ".guru")
+                    )
                     .cookies(Cookies.getCookies())
                     .get()
 
