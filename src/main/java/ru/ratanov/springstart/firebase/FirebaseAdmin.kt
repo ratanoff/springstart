@@ -75,7 +75,8 @@ class FirebaseAdmin {
 
     private fun sendMessage(fcmToken: String) {
         val message = Message.builder()
-                .setNotification(Notification("Title", "Body Message"))
+                .putData("url", "someUrl")
+                .putData("magnetLink", "someMagnet")
                 .setToken(fcmToken)
                 .build()
 
